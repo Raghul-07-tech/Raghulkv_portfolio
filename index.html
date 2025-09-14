@@ -8,7 +8,7 @@
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-<!-- Font Awesome for Social Icons -->
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!-- CSS -->
@@ -40,16 +40,16 @@
 <section id="about" class="hero section">
   <div class="container hero-content">
     <div class="hero-left">
-      <img src="myphoto.jpeg" alt="Profile photo" class="profile">
+      <img src="myphoto.jpeg" alt="Profile photo" class="profile fade-item">
     </div>
-    <div class="hero-right">
-      <h2>Hello! I'm <span class="accent">Raghul</span></h2>
-      <p class="tagline">Data Analytics & AI/ML Enthusiast</p>
+    <div class="hero-right fade-item">
+      <h2>Hi! I'm <span class="accent">Raghul</span></h2>
+      <p class="tagline">Data Analytics & Cybersecurity Enthusiast</p>
       <p class="intro">
-        I am a Computer Science and Engineering student with a strong foundation in
-        <strong>Data Analytics, AI/ML, and Cloud Computing</strong>.
-        Skilled in Python, SQL, Power BI, and machine learning,
-        I love solving real-world problems through data-driven insights.
+        I'm passionate about uncovering insights from data and exploring secure
+        digital solutions. My interests span <strong>data analytics</strong>,
+        <strong>cybersecurity</strong>, and emerging technologies that shape
+        the future of computing.
       </p>
 
       <!-- Social Icons -->
@@ -72,7 +72,7 @@
 
 <!-- ===== SKILLS ===== -->
 <section id="skills" class="section">
-  <div class="container">
+  <div class="container fade-item">
     <h2 class="section-title">Skills</h2>
     <ul class="grid">
       <li>Python, Java, C, C++, SQL</li>
@@ -88,7 +88,7 @@
 
 <!-- ===== PROJECTS ===== -->
 <section id="projects" class="section alt">
-  <div class="container">
+  <div class="container fade-item">
     <h2 class="section-title">Projects</h2>
     <div class="cards">
       <div class="card">
@@ -109,7 +109,7 @@
 
 <!-- ===== EDUCATION ===== -->
 <section id="education" class="section">
-  <div class="container">
+  <div class="container fade-item">
     <h2 class="section-title">Education</h2>
     <p><strong>B.E. Computer Science & Engineering</strong> – Prince Shri Venkateshwara Padmavathy Engineering College, CGPA 8.21 (6th Sem)</p>
     <p>Class 12 – Shrishti Vidyashram Sr. Sec. School, 72.2% (2022)</p>
@@ -118,7 +118,7 @@
 
 <!-- ===== CERTIFICATIONS ===== -->
 <section id="certifications" class="section alt">
-  <div class="container">
+  <div class="container fade-item">
     <h2 class="section-title">Certifications</h2>
     <ul>
       <li>NPTEL: Design Thinking, Research & Innovation</li>
@@ -131,7 +131,7 @@
 
 <!-- ===== RESUME ===== -->
 <section id="resume" class="section alt">
-  <div class="container">
+  <div class="container fade-item">
     <h2 class="section-title">Resume</h2>
     <p>You can view or download my detailed resume below:</p>
     <a href="KVRaghul_Resume.pdf" target="_blank" class="btn">View / Download Resume</a>
@@ -140,7 +140,7 @@
 
 <!-- ===== CONTACT ===== -->
 <section id="contact" class="section">
-  <div class="container">
+  <div class="container fade-item">
     <h2 class="section-title">Contact</h2>
     <div class="contact-icons">
       <a href="mailto:krishnamoorthiraghul123@gmail.com" aria-label="Email">
@@ -157,9 +157,26 @@
   <p>© 2025 K. V. Raghul | Built with HTML, CSS & JavaScript</p>
 </footer>
 
-<!-- JS -->
+<!-- ===== GSAP ===== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="script.js"></script>
+<script>
+  // Animate hero elements on load
+  gsap.from(".hero-left", {duration: 1.2, x: -80, opacity: 0, ease: "power3.out"});
+  gsap.from(".hero-right", {duration: 1.2, x: 80, opacity: 0, delay: 0.3, ease: "power3.out"});
+
+  // Fade in sections when scrolling
+  const fadeItems = document.querySelectorAll(".fade-item");
+  const revealOnScroll = () => {
+    fadeItems.forEach(item => {
+      const rect = item.getBoundingClientRect();
+      if(rect.top < window.innerHeight - 100){
+        gsap.to(item, {opacity: 1, y: 0, duration: 1});
+      }
+    });
+  };
+  fadeItems.forEach(item => gsap.set(item, {opacity: 0, y: 40}));
+  window.addEventListener("scroll", revealOnScroll);
+</script>
 
 </body>
 </html>
