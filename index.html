@@ -160,22 +160,35 @@
 <!-- ===== GSAP ===== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script>
-  // Animate hero elements on load
-  gsap.from(".hero-left", {duration: 1.2, x: -80, opacity: 0, ease: "power3.out"});
-  gsap.from(".hero-right", {duration: 1.2, x: 80, opacity: 0, delay: 0.3, ease: "power3.out"});
+  // Hero: photo & intro slide in immediately
+  gsap.from(".hero-left", {
+    duration: 1.0,
+    x: -60,
+    opacity: 0,
+    ease: "power3.out"
+  });
+  gsap.from(".hero-right", {
+    duration: 1.0,
+    x: 60,
+    opacity: 0,
+    ease: "power3.out"
+  });
 
-  // Fade in sections when scrolling
+  // Scroll fade for other sections
   const fadeItems = document.querySelectorAll(".fade-item");
+  fadeItems.forEach(item => gsap.set(item, {opacity: 0, y: 40}));
+
   const revealOnScroll = () => {
     fadeItems.forEach(item => {
       const rect = item.getBoundingClientRect();
-      if(rect.top < window.innerHeight - 100){
-        gsap.to(item, {opacity: 1, y: 0, duration: 1});
+      if (rect.top < window.innerHeight - 100 && !item.classList.contains("shown")) {
+        item.classList.add("shown");
+        gsap.to(item, {opacity: 1, y: 0, duration: 0.8, ease: "power2.out"});
       }
     });
   };
-  fadeItems.forEach(item => gsap.set(item, {opacity: 0, y: 40}));
   window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll(); // Run once on load
 </script>
 
 </body>
