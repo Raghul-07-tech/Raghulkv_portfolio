@@ -11,17 +11,82 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!-- CSS -->
-<link rel="stylesheet" href="style.css">
+<!-- ===== CSS ===== -->
+<style>
+/* ----- General Reset ----- */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f5f5f5;
+  color:#333;
+  overflow-x:hidden;
+}
+.container{width:90%;max-width:1100px;margin:auto;}
+header{background:#fff;box-shadow:0 2px 5px rgba(0,0,0,0.1);position:fixed;width:100%;z-index:1000;}
+.nav-container{display:flex;justify-content:space-between;align-items:center;padding:15px 0;}
+.logo{font-size:1.6rem;color:#333;font-weight:600;}
+.nav-links{list-style:none;display:flex;gap:20px;}
+.nav-links a{text-decoration:none;color:#333;font-weight:500;transition:.3s;}
+.nav-links a:hover{color:#007bff;}
+.section{padding:100px 0;}
+.section-title{text-align:center;margin-bottom:40px;font-size:2rem;font-weight:600;}
+.accent{color:#007bff;}
+.btn{
+  display:inline-block;
+  padding:12px 30px;
+  background:#007bff;
+  color:#fff;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:500;
+  transition:.3s;
+}
+.btn:hover{background:#0056b3;}
+/* ----- Hero ----- */
+.hero{background:#fff;padding-top:120px;}
+.hero-content{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.hero-left{flex:1 1 350px;text-align:center;}
+.hero-left img{
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  object-fit:cover;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  opacity:0;
+  transform:translateY(80px);
+}
+.hero-right{flex:1 1 400px;padding:20px;}
+.hero-right h2{font-size:2.2rem;margin-bottom:10px;opacity:0;transform:translateY(80px);}
+.hero-right .tagline{font-size:1.1rem;color:#555;margin-bottom:20px;opacity:0;transform:translateY(80px);}
+.hero-right .intro{font-size:1rem;line-height:1.6;color:#444;margin-bottom:20px;opacity:0;transform:translateY(80px);}
+.social-icons{display:flex;gap:20px;margin-bottom:20px;}
+.social-icons a{font-size:1.4rem;color:#333;transition:.3s;}
+.social-icons a:hover{color:#007bff;}
+/* ----- Cards & Lists ----- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;list-style:none;text-align:center;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+.card{background:#fff;padding:20px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,0.08);transition:.3s;}
+.card:hover{transform:translateY(-5px);}
+.contact-icons{display:flex;flex-direction:column;align-items:center;gap:15px;}
+.contact-icons a{color:#333;font-size:1.1rem;text-decoration:none;transition:.3s;}
+.contact-icons a i{margin-right:10px;}
+.contact-icons a:hover{color:#007bff;}
+footer{text-align:center;padding:20px;background:#fff;margin-top:40px;font-size:0.9rem;}
+/* Scroll fade items */
+.fade-item{opacity:0;transform:translateY(40px);}
+</style>
 </head>
 <body>
 
 <!-- ===== HEADER ===== -->
 <header>
   <div class="container nav-container">
-    <div class="logo-box">
-      <h1 class="logo">K. V. Raghul</h1>
-    </div>
+    <h1 class="logo">K. V. Raghul</h1>
     <nav>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
@@ -40,9 +105,9 @@
 <section id="about" class="hero section">
   <div class="container hero-content">
     <div class="hero-left">
-      <img src="myphoto.jpeg" alt="Profile photo" class="profile fade-item">
+      <img src="myphoto.jpeg" alt="Profile photo" class="profile">
     </div>
-    <div class="hero-right fade-item">
+    <div class="hero-right">
       <h2>Hi! I'm <span class="accent">Raghul</span></h2>
       <p class="tagline">Data Analytics & Cybersecurity Enthusiast</p>
       <p class="intro">
@@ -52,7 +117,6 @@
         the future of computing.
       </p>
 
-      <!-- Social Icons -->
       <div class="social-icons">
         <a href="https://www.linkedin.com/in/k-v-raghul-875489340" target="_blank" aria-label="LinkedIn">
           <i class="fab fa-linkedin"></i>
@@ -71,8 +135,8 @@
 </section>
 
 <!-- ===== SKILLS ===== -->
-<section id="skills" class="section">
-  <div class="container fade-item">
+<section id="skills" class="section fade-item">
+  <div class="container">
     <h2 class="section-title">Skills</h2>
     <ul class="grid">
       <li>Python, Java, C, C++, SQL</li>
@@ -87,29 +151,20 @@
 </section>
 
 <!-- ===== PROJECTS ===== -->
-<section id="projects" class="section alt">
-  <div class="container fade-item">
+<section id="projects" class="section fade-item">
+  <div class="container">
     <h2 class="section-title">Projects</h2>
     <div class="cards">
-      <div class="card">
-        <h3>HEALTHSYNC (2025)</h3>
-        <p>Cloud-based patient record management using Flask & Google Cloud.</p>
-      </div>
-      <div class="card">
-        <h3>5G User Session Management (2025)</h3>
-        <p>Automated UE/gNB session control using Flask backend and nr-cli commands.</p>
-      </div>
-      <div class="card">
-        <h3>Borewell Rescue System (2023)</h3>
-        <p>Balloon-assisted mechanism to safely extract children from borewells.</p>
-      </div>
+      <div class="card"><h3>HEALTHSYNC (2025)</h3><p>Cloud-based patient record management using Flask & Google Cloud.</p></div>
+      <div class="card"><h3>5G Session Management</h3><p>Automated UE/gNB control using Flask backend & nr-cli commands.</p></div>
+      <div class="card"><h3>Borewell Rescue System</h3><p>Balloon-assisted mechanism to safely extract children from borewells.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ===== EDUCATION ===== -->
-<section id="education" class="section">
-  <div class="container fade-item">
+<section id="education" class="section fade-item">
+  <div class="container">
     <h2 class="section-title">Education</h2>
     <p><strong>B.E. Computer Science & Engineering</strong> – Prince Shri Venkateshwara Padmavathy Engineering College, CGPA 8.21 (6th Sem)</p>
     <p>Class 12 – Shrishti Vidyashram Sr. Sec. School, 72.2% (2022)</p>
@@ -117,8 +172,8 @@
 </section>
 
 <!-- ===== CERTIFICATIONS ===== -->
-<section id="certifications" class="section alt">
-  <div class="container fade-item">
+<section id="certifications" class="section fade-item">
+  <div class="container">
     <h2 class="section-title">Certifications</h2>
     <ul>
       <li>NPTEL: Design Thinking, Research & Innovation</li>
@@ -130,8 +185,8 @@
 </section>
 
 <!-- ===== RESUME ===== -->
-<section id="resume" class="section alt">
-  <div class="container fade-item">
+<section id="resume" class="section fade-item">
+  <div class="container">
     <h2 class="section-title">Resume</h2>
     <p>You can view or download my detailed resume below:</p>
     <a href="KVRaghul_Resume.pdf" target="_blank" class="btn">View / Download Resume</a>
@@ -139,16 +194,12 @@
 </section>
 
 <!-- ===== CONTACT ===== -->
-<section id="contact" class="section">
-  <div class="container fade-item">
+<section id="contact" class="section fade-item">
+  <div class="container">
     <h2 class="section-title">Contact</h2>
     <div class="contact-icons">
-      <a href="mailto:krishnamoorthiraghul123@gmail.com" aria-label="Email">
-        <i class="fas fa-envelope"></i> Email Me
-      </a>
-      <a href="tel:+918838168911" aria-label="Phone">
-        <i class="fas fa-phone"></i> +91-8838168911
-      </a>
+      <a href="mailto:krishnamoorthiraghul123@gmail.com"><i class="fas fa-envelope"></i>Email Me</a>
+      <a href="tel:+918838168911"><i class="fas fa-phone"></i>+91-8838168911</a>
     </div>
   </div>
 </section>
@@ -157,38 +208,54 @@
   <p>© 2025 K. V. Raghul | Built with HTML, CSS & JavaScript</p>
 </footer>
 
-<!-- ===== GSAP ===== -->
+<!-- ===== GSAP Animation ===== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script>
-  // Hero: photo & intro slide in immediately
-  gsap.from(".hero-left", {
-    duration: 1.0,
-    x: -60,
-    opacity: 0,
-    ease: "power3.out"
+/* --- Hero slide-in like reference site --- */
+window.addEventListener("load", () => {
+  gsap.to(".hero-left img", {
+    duration: 1.2,
+    y: 0,
+    opacity: 1,
+    ease: "power4.out"
   });
-  gsap.from(".hero-right", {
-    duration: 1.0,
-    x: 60,
-    opacity: 0,
-    ease: "power3.out"
+  gsap.to(".hero-right h2", {
+    duration: 1,
+    delay: 0.2,
+    y: 0,
+    opacity: 1,
+    ease: "power4.out"
   });
+  gsap.to(".hero-right .tagline", {
+    duration: 1,
+    delay: 0.4,
+    y: 0,
+    opacity: 1,
+    ease: "power4.out"
+  });
+  gsap.to(".hero-right .intro", {
+    duration: 1,
+    delay: 0.6,
+    y: 0,
+    opacity: 1,
+    ease: "power4.out"
+  });
+});
 
-  // Scroll fade for other sections
-  const fadeItems = document.querySelectorAll(".fade-item");
-  fadeItems.forEach(item => gsap.set(item, {opacity: 0, y: 40}));
-
-  const revealOnScroll = () => {
-    fadeItems.forEach(item => {
-      const rect = item.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100 && !item.classList.contains("shown")) {
-        item.classList.add("shown");
-        gsap.to(item, {opacity: 1, y: 0, duration: 0.8, ease: "power2.out"});
-      }
-    });
-  };
-  window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll(); // Run once on load
+/* --- Fade-in sections on scroll --- */
+const fadeItems = document.querySelectorAll(".fade-item");
+fadeItems.forEach(item => gsap.set(item,{opacity:0,y:40}));
+function revealOnScroll(){
+  fadeItems.forEach(item=>{
+    const rect=item.getBoundingClientRect();
+    if(rect.top<window.innerHeight-80 && !item.classList.contains("shown")){
+      item.classList.add("shown");
+      gsap.to(item,{opacity:1,y:0,duration:0.8,ease:"power2.out"});
+    }
+  });
+}
+window.addEventListener("scroll",revealOnScroll);
+revealOnScroll();
 </script>
 
 </body>
